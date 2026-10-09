@@ -8,8 +8,8 @@ class vehicle
 public:
     enum color
     {
-        blue = 5,
-        red ,
+        blue,
+        red,
         green,
         white,
         black
