@@ -1,9 +1,9 @@
 #include <iostream>
-#include <iomanip>
+#include <iomanip>// Include the iomanip library for formatting output
 
 const int SIZE = 8;
 
-
+//  borad 二维 int 数组（zweidimensionales Array）
 
 bool isValid(int board[SIZE][SIZE], int x, int y)
 {
@@ -12,7 +12,10 @@ bool isValid(int board[SIZE][SIZE], int x, int y)
         return false;
     }
 
-    if (board[x][y] != 0)
+    if (board[x][y] != 0)// Check if the square has already been visited
+    {
+        return false;
+    }
     {
         return false;
     }
@@ -22,7 +25,7 @@ bool isValid(int board[SIZE][SIZE], int x, int y)
 
 
 
-int countMoves(int board[SIZE][SIZE], int x, int y)
+int countMoves(int board[SIZE][SIZE], int x, int y)// Count the number of valid moves from the current position
 {
     
     int dx[8] =
@@ -100,7 +103,8 @@ bool findpath(int board[SIZE][SIZE],
     int numberOfPossibilities = 0;
 
 
-
+// 第1个 for：找出“现在”所有能走的位置
+//我现在这一格，下一步有哪些地方可以走；并且如果走到那些地方，各自再往下一步有多少种可能。
     for (int i = 0; i < 8; i++)
     {
         int nextX = x + dx[i];
@@ -123,7 +127,7 @@ bool findpath(int board[SIZE][SIZE],
         }
     }
 
-
+// 第2个双层 for：把这些位置按照“下一步可能性”排序
     for (int i = 0; i < numberOfPossibilities - 1; i++)
     {
         for (int j = i + 1; j < numberOfPossibilities; j++)
@@ -149,7 +153,7 @@ bool findpath(int board[SIZE][SIZE],
         }
     }
 
-
+// 第3个 for：按照排好的顺序，一个一个真正尝试
     for (int i = 0; i < numberOfPossibilities; i++)
     {
         int nextX = possibleX[i];
@@ -160,7 +164,7 @@ bool findpath(int board[SIZE][SIZE],
         board[nextX][nextY] = step + 1;
 
 
-
+// 递归调用
         if (findpath(board,
                      nextX,
                      nextY,
@@ -220,11 +224,11 @@ int main()
     std::cin >> startY;
 
 
-    startX--;
-    startY--;
+    startX--;// Adjust for 0-based indexing
+    startY--;// Adjust for 0-based indexing
 
 
-    // 检查起点
+    // Check if the starting position is valid
     if (startX < 0 || startX >= SIZE ||
         startY < 0 || startY >= SIZE)
     {

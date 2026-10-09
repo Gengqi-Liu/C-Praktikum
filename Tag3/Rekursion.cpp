@@ -1,8 +1,6 @@
 #include <iostream>
 
-// ========================================
 // a) Iterative Berechnung
-// ========================================
 
 unsigned long long factorialIter(unsigned int n)
 {
@@ -25,9 +23,7 @@ unsigned long long factorialIter(unsigned int n)
 }
 
 
-// ========================================
 // b) Rekursive Berechnung
-// ========================================
 
 unsigned long long factorialRec(unsigned int n)
 {
@@ -44,9 +40,6 @@ unsigned long long factorialRec(unsigned int n)
 }
 
 
-// ========================================
-// main
-// ========================================
 
 int main()
 {

@@ -94,7 +94,8 @@ int main()
 
 
     
-    std::list<coord> backup = coords;
+    //std::list<coord> backup = coords;
+    std::list<coord> backup(coords);
 
 
    
